@@ -1,0 +1,31 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "aws4": "^1.8.0",
+    "axios": "^0.18.0",
+    "jsonwebtoken": "^8.5.0",
+    "jwk-to-pem": "^2.0.1",
+    "redis": "^2.8.0",
+    "request-debug": "^0.2.0"
+  },
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "devDependencies": {
+    "aws-sdk": "latest",
+    "aws-sdk-mock": "^4.3.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "dynalite": "^2.2.0",
+    "fakeredis": "^2.0.0",
+    "mocha": "^5.1.1",
+    "mockery": "^2.1.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.2.6"
+  }
+}
