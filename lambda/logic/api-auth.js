@@ -1,4 +1,4 @@
-const { pemFactory, audienceFactory } = require("./auth-factory");
+const { pemFactory, audienceFactory } = require("../config");
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const { getUser } = require('../connectors/redis-connector');
@@ -32,9 +32,9 @@ const generatePolicy = function (principalId, effect, resource, extraValues) {
 
 
 async function verifyJwt(token, algorithms = ['RS256']) {
-    const verify = promisify(jwt.verify);
+    const { header: { kid } } = await promisify(jwt.decode)(token, { complete: true });
     // Cognito-issued access tokens don't include the audience claim
-    return await verify(token, pemFactory(), { algorithms })
+    return await promisify(jwt.verify)(token, pemFactory(kid), { algorithms })
         .then(t => {
             if (t['client_id'] !== audienceFactory()) throw { err: 'ClientIdMismatch' };
             return t
@@ -58,8 +58,11 @@ exports.jwtVerifier = async event => {
     return verifyJwt(queryStringParameters['access_token'])
         .then(payload => generateAllow(payload.sub, event.methodArn, {
             username: payload.username,
+            sessionType: 'main',
         },))
-        .catch(() => throw "Unauthorized");
+        .catch(() => {
+            throw "Unauthorized";
+        });
 };
 
 exports.subSessionVerifier = async event => {
@@ -68,6 +71,8 @@ exports.subSessionVerifier = async event => {
     const queryStringParameters = event.queryStringParameters;
 
     return verifySubSession(queryStringParameters['msId'], queryStringParameters['clientId'])
-        .then(userId => generateAllow(userId, event.methodArn))
-        .catch(() => throw "Unauthorized")
+        .then(userId => generateAllow(userId, event.methodArn, { sessionType: 'sub' }))
+        .catch(() => {
+            throw "Unauthorized";
+        })
 };

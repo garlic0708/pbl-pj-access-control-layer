@@ -1,0 +1,97 @@
+{
+  "type": "REQUEST",
+  "methodArn": "arn:aws:execute-api:us-west-2:696961721203:k50xhwmzol/beta2/$connect",
+  "headers": {
+    "Connection": "upgrade",
+    "content-length": "0",
+    "Host": "k50xhwmzol.execute-api.us-west-2.amazonaws.com",
+    "Sec-WebSocket-Extensions": "permessage-deflate; client_max_window_bits",
+    "Sec-WebSocket-Key": "WvzEIdRFJs4oAEziXPn+Uw==",
+    "Sec-WebSocket-Version": "13",
+    "Upgrade": "websocket",
+    "X-Amzn-Trace-Id": "Root=1-5c7f935c-0e30adfe82a2bf6c899bca7d",
+    "X-Forwarded-For": "202.120.234.70",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+    "Connection": [
+      "upgrade"
+    ],
+    "content-length": [
+      "0"
+    ],
+    "Host": [
+      "k50xhwmzol.execute-api.us-west-2.amazonaws.com"
+    ],
+    "Sec-WebSocket-Extensions": [
+      "permessage-deflate; client_max_window_bits"
+    ],
+    "Sec-WebSocket-Key": [
+      "WvzEIdRFJs4oAEziXPn+Uw=="
+    ],
+    "Sec-WebSocket-Version": [
+      "13"
+    ],
+    "Upgrade": [
+      "websocket"
+    ],
+    "X-Amzn-Trace-Id": [
+      "Root=1-5c7f935c-0e30adfe82a2bf6c899bca7d"
+    ],
+    "X-Forwarded-For": [
+      "202.120.234.70"
+    ],
+    "X-Forwarded-Port": [
+      "443"
+    ],
+    "X-Forwarded-Proto": [
+      "https"
+    ]
+  },
+  "queryStringParameters": {
+    "session_type": "main",
+    "access_token": "eyJraWQiOiJ5amdDdVV3bHVOOEZUZkRyTmwxcEIweVwvZUxxTmpmTVVXTWNpR2p1bGhGUT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIwYjBhNTdjNS1mMDEzLTQyNmEtODFhMS1mOGZmYmZiYTIxZjAiLCJldmVudF9pZCI6ImFlNjk0OWRhLTQwZmQtMTFlOS1iNjM0LWI3ZTY5NDc3YTQ4ZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoib3BlbmlkIiwiYXV0aF90aW1lIjoxNTUxOTc5MzkxLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtd2VzdC0yLmFtYXpvbmF3cy5jb21cL3VzLXdlc3QtMl9uU1FrV2JkeUYiLCJleHAiOjE1NTE5ODI5OTEsImlhdCI6MTU1MTk3OTM5MSwidmVyc2lvbiI6MiwianRpIjoiODAzMzIxMTAtMGUxNy00MGRmLWE1YWYtMDEwYmI5Mjg2MjNkIiwiY2xpZW50X2lkIjoiMTNmaGJoMzFxZ3Btc3BnNTM2OXNyNzBjcHIiLCJ1c2VybmFtZSI6InRlc3RxcSJ9.c__ZEps2cOkuFMaoPkWcI2WKxmAFaMMULUeDzysHAdiuMi4DJUDLRekG_KeTghYFfouxugT4flKcauSIRQv3U9WbpZ6Quyfkm7POx03jB7GujPoFbDDB_ngWATxArl71PEu1tjPHhnON_ajLlz404k4uJNEZ0m_6r1LIr7Mro2AyF1Awqp8lU_LsAssJf9z0_4j-soNmFXLFz8d-6_WMQuDuA31el4RKCekcTw6q8gdjkjHmdEFHb5G0H-rfUBe7Hs_iZzVnrAQpXYvV0sPPQWgP8SijuRXK8o4tjB8HM0sfDwbOxgI4x0XKjkRpu6Q2Lij_XtlGy8NoiVpuEV-xwg"
+  },
+  "multiValueQueryStringParameters": {
+    "qs2": [
+      "ss2"
+    ],
+    "qs": [
+      "ss1"
+    ]
+  },
+  "stageVariables": {},
+  "requestContext": {
+    "routeKey": "$connect",
+    "authorizer": "",
+    "messageId": null,
+    "integrationLatency": "",
+    "eventType": "CONNECT",
+    "error": "",
+    "extendedRequestId": "WHP2gGJnvHcFUyA=",
+    "requestTime": "06/Mar/2019:09:31:08 +0000",
+    "messageDirection": "IN",
+    "stage": "beta2",
+    "connectedAt": 1551864668879,
+    "requestTimeEpoch": 1551864668882,
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "202.120.234.70",
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": null,
+      "user": null
+    },
+    "requestId": "WHP2gGJnvHcFUyA=",
+    "domainName": "k50xhwmzol.execute-api.us-west-2.amazonaws.com",
+    "connectionId": "WHP2gcqnPHcCElQ=",
+    "apiId": "k50xhwmzol",
+    "status": ""
+  }
+}
