@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const {lazyLoader} = require("../utils/lazy-loader");
+require('./api-gateway-management');
 
 
 /**
@@ -9,14 +9,12 @@ const {lazyLoader} = require("../utils/lazy-loader");
  * @param requestContext
  */
 function managementApiFactory(requestContext) {
-    const { domain, stage } = requestContext;
+    const { domainName: domain, stage } = requestContext;
     return new AWS.ApiGatewayManagementApi({
         apiVersion: '2018-11-29',
         endpoint: `${domain}/${stage}`
     })
 }
-
-const getManagementApi = lazyLoader(managementApiFactory);
 
 
 /**
@@ -29,9 +27,11 @@ const getManagementApi = lazyLoader(managementApiFactory);
  */
 async function callbackToWs(requestContext, content, connectionId) {
     if (!connectionId) connectionId = requestContext.connectionId;
-    return getManagementApi(requestContext).postToConnection({
+    const apiGatewayManagementApi = managementApiFactory(requestContext);
+    console.log('management api', apiGatewayManagementApi);
+    await apiGatewayManagementApi.postToConnection({
         ConnectionId: connectionId,
-        Data: content,
+        Data: JSON.stringify(content),
     }).promise()
 }
 

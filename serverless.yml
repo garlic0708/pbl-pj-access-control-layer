@@ -14,24 +14,38 @@ provider:
     securityGroupIds:
       - sg-b8c2cac2
     subnetIds:
-      - subnet-c688fe9d
-      - subnet-dfaf0fb9
-      - subnet-7acf9052
-      - subnet-1927e151
+      - subnet-024007cea20f97a89
+      - subnet-065e407bd9ade0565
+      - subnet-0f44153310c6ecc59
+      - subnet-0e745348a64d5d001
+
+  iamRoleStatements:
+    - Action: cognito-idp:*
+      Resource: arn:aws:cognito-idp:*:*:userpool/*
+      Effect: Allow
+    - Action: dynamodb:*
+      Resource: arn:aws:dynamodb:*:*:table/*
+      Effect: Allow
+
 
 custom:
-  authorizer:
-    name: pbl-pj-access-control-layer
+  authorizer: &auth
+    name: lambda
     type: request
-    identitySource: 'method.request.querystring.session_type'
+  auth-ws:
+    <<: *auth
+    identitySource:
+      - 'route.request.querystring.session_type'
+  auth-http:
+    <<: *auth
+    identitySource: method.request.header.Authorization, method.request.header.X-Session-Type
   redisUrl:
-    dev: testcluster.7o3wd3.ng.0001.usw2.cache.amazonaws.com:6379
+    dev: testcluster.7o3wd3.ng.0001.usw2.cache.amazonaws.com
     local: localhost
 
 package:
   exclude:
-    - '*/node_modules'
-    - '*/tests'
+    - '*/tests/**'
 
 
 functions:
@@ -41,20 +55,23 @@ functions:
     events:
       - websocket:
           route: $connect
-          authorizer: ${self:custom.authorizer}
+          authorizer: ${self:custom.auth-ws}
       - websocket: $default
       - websocket: $disconnect
-      - websocket: getMSId
+      - websocket: getSessionId
+      - websocket: trustClient
+      - websocket: getClientName
+      - websocket: isClientTrusted
       - http:
           #          path: ${file(lambda/delegator.js):delegator.registerNewClientPath}
           path: registerNewClient
           method: post
-          authorizer: ${self:custom.authorizer}
+          authorizer: ${self:custom.auth-http}
       - http:
           #          path: ${file(lambda/delegator.js):delegator.listCreatedClientsPath}
           path: listCreatedClients
           method: get
-          authorizer: ${self:custom.authorizer}
+          authorizer: ${self:custom.auth-http}
     environment:
       REDIS_URL: ${self:custom.redisUrl.${opt:stage}}
       MS_CLIENT: 13fhbh31qgpmspg5369sr70cpr

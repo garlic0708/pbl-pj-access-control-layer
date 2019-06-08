@@ -3,16 +3,16 @@ const AWS = require("aws-sdk");
 const { defaultConfig, cognitoConfig } = require("../config");
 const { promisify } = require("util");
 
-const challengeName = 'MAIN_SESSION';
+const CHALLENGE_NAME = 'CUSTOM_CHALLENGE';
 
 async function defineChallenge(event) {
     const { request: { session }, response } = event;
     if (!session.length) {
-        response.challengeName = challengeName;
+        response.challengeName = CHALLENGE_NAME;
         response.failAuthentication = false;
         response.issueTokens = false;
     } else {
-        response.issueTokens = session[0].challengeName === challengeName && session[0].challengeResult;
+        response.issueTokens = session[0].challengeName === CHALLENGE_NAME && session[0].challengeResult;
         response.failAuthentication = !response.issueTokens
     }
     return event
@@ -23,7 +23,7 @@ async function createChallenge(event) {
         request: { challengeName: cn }, response,
         callerContext: { clientId }
     } = event;
-    if (cn === challengeName) response.privateChallengeParameters = { clientId };
+    if (cn === CHALLENGE_NAME) response.privateChallengeParameters = { clientId };
     return event
 }
 
@@ -70,7 +70,7 @@ async function preTokenGenerate(event) {
         event.response = {
             claimsOverrideDetails: {
                 claimsToAddOrOverride: {
-                    scope: scopes,
+                    scope: scopes.join(' '),
                 },
             }
         };

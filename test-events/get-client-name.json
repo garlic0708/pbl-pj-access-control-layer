@@ -1,0 +1,37 @@
+{
+  "requestContext": {
+    "routeKey": "getClientName",
+    "authorizer": {
+      "sessionType": "main",
+      "principalId": "0b0a57c5-f013-426a-81a1-f8ffbfba21f0",
+      "username": "testqq"
+    },
+    "messageId": "YfySqeOMvHcCGuQ=",
+    "eventType": "MESSAGE",
+    "extendedRequestId": "YfySqHLHPHcFt6Q=",
+    "requestTime": "21/Apr/2019:16:16:04 +0000",
+    "messageDirection": "IN",
+    "stage": "dev",
+    "connectedAt": 1555863361790,
+    "requestTimeEpoch": 1555863364289,
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "47.74.189.205",
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": null,
+      "user": null
+    },
+    "requestId": "YfySqHLHPHcFt6Q=",
+    "domainName": "rgmevj1mfc.execute-api.us-west-2.amazonaws.com",
+    "connectionId": "YfySReOLPHcCGuQ=",
+    "apiId": "rgmevj1mfc"
+  },
+  "body": "{\"action\":\"getClientName\", \"clientId\":\"71ghuul37mresr7h373b704tua\"}",
+  "isBase64Encoded": false
+}

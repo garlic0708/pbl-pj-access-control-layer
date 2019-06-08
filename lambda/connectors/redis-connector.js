@@ -5,6 +5,7 @@ const { lazyLoader } = require("../utils/lazy-loader");
 
 
 function clientFactory() {
+    console.log('create redis client with url', redisUrl);
     return redis.createClient(6379, redisUrl);
 }
 
@@ -85,8 +86,10 @@ async function unwatchHandler(err) {
 }
 
 exports.addMainSession = async (userId, msId, username) => {
+    console.log('adding main session with', userId, msId, username);
     const msUserKey = getMSUserKey(msId);
     await command('watch', msUserKey, loggedInUsersSetKey);
+    console.log('redis watch success');
     await validate(unwatchHandler, {
         promise: command('exists', msUserKey), condition: v => v === 1, err: 'MainSessionAlreadyExists',
     }, {
@@ -141,6 +144,14 @@ exports.getAllClients = async (msId) => {
 exports.getUser = async (msId) => {
     return await command('hmget', getMSUserKey(msId), userIdHashKey, usernameHashKey)
         .then(([userId, username]) => userId ? { userId, username } : null)
+};
+
+exports.isMsOrSs = async sessionId => {
+    if (+(await command('exists', getMSUserKey(sessionId))))
+        return 'ms';
+    if (+(await command('exists', getSSKey(sessionId))))
+        return 'ss';
+    throw 'InvalidSession'
 };
 
 exports.getSubSession = async (msId, clientId) => {
@@ -209,6 +220,12 @@ exports.detachMainSession = async (msId) => {
         .del(getSSKey(ssId))
         .del(getMSClientKey(msId, clientId)));
     return await execMulti(multi)
+};
+
+exports.testRedis = async () => {
+    console.log('set', await command('set', 'a', 1));
+    console.log('get', await command('get', 'a'));
+    console.log('del', await command('del', 'a'));
 };
 
 exports.quitClient = () => getClient().quit();

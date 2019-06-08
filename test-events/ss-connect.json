@@ -1,0 +1,101 @@
+{
+  "type": "REQUEST",
+  "methodArn": "arn:aws:execute-api:us-west-2:696961721203:rgmevj1mfc/dev/$connect",
+  "headers": {
+    "Connection": "upgrade",
+    "content-length": "0",
+    "Host": "rgmevj1mfc.execute-api.us-west-2.amazonaws.com",
+    "Sec-WebSocket-Extensions": "permessage-deflate; client_max_window_bits",
+    "Sec-WebSocket-Key": "NUERSFMmoCtAPdrUsjU9Zg==",
+    "Sec-WebSocket-Version": "13",
+    "Upgrade": "websocket",
+    "X-Amzn-Trace-Id": "Root=1-5ca882e4-1da85f0cddcb1308b96e8fc8",
+    "X-Forwarded-For": "47.74.135.127",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+    "Connection": [
+      "upgrade"
+    ],
+    "content-length": [
+      "0"
+    ],
+    "Host": [
+      "rgmevj1mfc.execute-api.us-west-2.amazonaws.com"
+    ],
+    "Sec-WebSocket-Extensions": [
+      "permessage-deflate; client_max_window_bits"
+    ],
+    "Sec-WebSocket-Key": [
+      "NUERSFMmoCtAPdrUsjU9Zg=="
+    ],
+    "Sec-WebSocket-Version": [
+      "13"
+    ],
+    "Upgrade": [
+      "websocket"
+    ],
+    "X-Amzn-Trace-Id": [
+      "Root=1-5ca882e4-1da85f0cddcb1308b96e8fc8"
+    ],
+    "X-Forwarded-For": [
+      "47.74.135.127"
+    ],
+    "X-Forwarded-Port": [
+      "443"
+    ],
+    "X-Forwarded-Proto": [
+      "https"
+    ]
+  },
+  "queryStringParameters": {
+    "msId": "XtlXTfC9PHcCElQ=",
+    "clientId": "71ghuul37mresr7h373b704tua",
+    "session_type": "sub"
+  },
+  "multiValueQueryStringParameters": {
+    "msId": [
+      "XtlXTfC9PHcCElQ="
+    ],
+    "clientId": [
+      "71ghuul37mresr7h373b704tua"
+    ],
+    "session_type": [
+      "sub"
+    ]
+  },
+  "stageVariables": {},
+  "requestContext": {
+    "routeKey": "$connect",
+    "authorizer": "",
+    "messageId": null,
+    "integrationLatency": "",
+    "eventType": "CONNECT",
+    "error": "",
+    "extendedRequestId": "XtljwF8MvHcFXYQ=",
+    "requestTime": "06/Apr/2019:10:43:48 +0000",
+    "messageDirection": "IN",
+    "stage": "dev",
+    "connectedAt": 1554547428860,
+    "requestTimeEpoch": 1554547428861,
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "47.74.135.127",
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": null,
+      "user": null
+    },
+    "requestId": "XtljwF8MvHcFXYQ=",
+    "domainName": "rgmevj1mfc.execute-api.us-west-2.amazonaws.com",
+    "connectionId": "XtljwfEfPHcCElQ=",
+    "apiId": "rgmevj1mfc",
+    "status": ""
+  }
+}
